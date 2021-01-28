@@ -20,7 +20,11 @@ def rmanCommand():
     if not request.json or not 'connect_string' in request.json:
         abort(400)
     connect_string = request.json['connect_string']
-    result = subprocess.run(["bash","./rman.sh",connect_string] )
+    command = request.json['command'].lower()
+    if command in ['list','backupcontrolfile','fullbackup','restore']:
+        result = subprocess.run(["bash","./rman.sh",connect_string, command] )
+    else:
+        return "invalid command"
     print("result=", result)
     return jsonify({'result': 200}), 200
 if __name__ == '__main__':
