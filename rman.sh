@@ -12,6 +12,9 @@ return_code=$?
 elif [ $command = "backupcontrolfile" ]; then
 rman target $connect_string cmdfile=backupcontrolfile.rman
 return_code=$?
+elif [ $command = "fullbackup" ]; then
+rman target $connect_string cmdfile=fullbackup.rman
+return_code=$?
 else
 echo "command is not yet implemented"
 fi
