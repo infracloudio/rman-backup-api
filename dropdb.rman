@@ -1,0 +1,3 @@
+startup force mount;
+sql 'alter system enable restricted session';
+drop database;
