@@ -1,0 +1,13 @@
+RUN {
+set DBID &1;
+startup nomount;
+restore spfile from '/home/oracle/backup/ORCLCDB_20210222_70_1_SPFILE';
+startup force nomount;
+restore controlfile from '/home/oracle/backup/ORCLCDB_20210222_76_1_CONTROL';
+alter database mount;
+catalog start with '/home/oracle/backup';
+restore database;
+recover database until available redo;
+alter database open resetlogs;
+}
+QUIT;
