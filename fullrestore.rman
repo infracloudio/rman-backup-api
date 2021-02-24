@@ -1,9 +1,9 @@
 RUN {
 set DBID &1;
 startup nomount;
-restore spfile from '/home/oracle/backup/ORCLCDB_20210222_70_1_SPFILE';
+restore spfile from '/home/oracle/backup/SPFILE_BACKUP';
 startup force nomount;
-restore controlfile from '/home/oracle/backup/ORCLCDB_20210222_76_1_CONTROL';
+restore controlfile from '/home/oracle/backup/CONTROLFILE_BACKUP';
 alter database mount;
 catalog start with '/home/oracle/backup';
 restore database;
